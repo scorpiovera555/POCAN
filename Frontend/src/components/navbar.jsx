@@ -11,10 +11,10 @@ function Navbar() {
             <div className="flex items-center gap-3 sm:ml-10">
                 <span className="">
                     <label htmlFor="search">
-                        <FontAwesomeIcon className="text-xl" icon={faMagnifyingGlass} />
+                        <FontAwesomeIcon className="text-xl absolute left-7 top-8 text-gray-300" icon={faMagnifyingGlass}/>
                     </label>
-                </span>
-                <input type="text" id="search" className="w-62 bg-white rounded-lg px-2 py-1 sm:py-2 sm:w-140 text-black" placeholder="Cari Makanan...."/>
+                </span> 
+                <input type="text" id="search" className="w-73 bg-white rounded-lg px-2 pl-9 py-2 sm:py-2 sm:w-140 text-black" placeholder="Cari Makanan...."/>
             </div>
             <div className="flex items-center">
                 <div className="hidden sm:flex gap-5 mr-10 text-2xl items-center">

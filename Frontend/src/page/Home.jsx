@@ -1,15 +1,16 @@
 import Navbar from "../components/navbar.jsx"
 import Menu from "../components/Menu.jsx"
 import ScrollUser from "../components/scroll.jsx"
-function Home() {
+function Home({ datas }) {
+    console.log(datas)
     return (
         <>
         <Navbar />
-        <div className="mt-15 sm:mt-0">
+        <div className="mt-15 sm:mt-0 bg-bgcol">
             <ScrollUser/>
-            <Menu/>
+            <Menu data={datas} />
         </div>
-        <div className="h-5"></div>
+        <div className="h-5 sm:hidden"></div>
         </>
     )
 }
