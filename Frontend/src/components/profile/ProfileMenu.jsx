@@ -1,6 +1,10 @@
 import Card from "../Card.jsx"
+import { ItemsContext } from "../../app.jsx"
+import { useContext } from "react"
 
-function ProfileProduct({ option, setOption, product}) {
+function ProfileProduct({ option, setOption}) {
+    const item = useContext(ItemsContext);
+    console.log(item)
     return(
         <div className="bg-gray-100 h-screen rounded-t-xl">
             <nav className="flex justify-around p-5 text-sm h-10 bg-white rounded-t-xl items-center">
@@ -16,7 +20,7 @@ function ProfileProduct({ option, setOption, product}) {
             </nav>
             <main>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 my-10 justify-center w-full place-items-center px-7">
-                    {product.map(data => {
+                    {item.map(data => {
                         return <Card datas={data} /> 
                     })}
                 </div>

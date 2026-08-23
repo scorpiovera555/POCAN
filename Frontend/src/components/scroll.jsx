@@ -1,22 +1,8 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useContext, useState } from "react"
+import { UsersContext } from "../app.jsx";
 
 function ScrollUser() {
-    const [user, setMyUser] = useState([]);
-    useEffect(() => {
-        const getUser = async () => {
-            try {
-                const response = await fetch("https://dummyjson.com/users");
-                const data = await response.json();
-                setMyUser(data.users)
-            }
-            catch(err) {
-                console.error(err);
-                return
-            }
-        }
-
-        getUser()
-    }, [])
+    const users = useContext(UsersContext);
     const sliderRef = useRef(null);
     const isDown = useRef(false);
     const position = useRef(0);
@@ -41,7 +27,6 @@ function ScrollUser() {
         isDown.current = false;
     }
 
-    console.log(user)
     const box = ["box1", "box2"]
     return (
         <> 
@@ -51,8 +36,10 @@ function ScrollUser() {
         onMouseMove={handleMove}
         onMouseLeave={handleLeft}
         onMouseUp={handleLeft}>
-            {user.map((box, num) => {
-                return <div className="flex rounded-lg shrink-0 items-center justify-center select-none w-20 sm:w-30 h-20 sm:h-30 bg-gray-300" onClick={() => {location.href = `/kantin/${num}`}}>{box}</div>
+            {users.map((user) => {
+                return <img key={user.id} src={user.image} alt="poto propile" className="w-18" onClick={() => {
+                    location.href = `/kantin/${user.id}`
+                }}/>
             })}
             <div className="flex w-20 items-center justify-center text-sm sm:text-lg font-semibold shrink-0 whitespace-nowrap">{"> See More"}</div>
         </div>
