@@ -9,7 +9,7 @@ function BottomMenu() {
     console.log(path)
     return (
         <>
-        <footer className="flex sm:hidden justify-between bg-green-300 p-3 text-white fixed bottom-0 left-0 w-full text-2xl">
+        <footer className="flex sm:hidden justify-between bg-primary p-3 text-white fixed bottom-0 left-0 w-full text-2xl">
             <span className="flex flex-col items-center" onClick={() => {
                 location.href = "/"
             }}>

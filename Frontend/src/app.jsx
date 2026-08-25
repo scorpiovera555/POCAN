@@ -10,6 +10,7 @@ export const UsersContext = createContext();
 export function App() {
   const [data, setData] = useState([]);
   const [user, setUser] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const GetProduct = async () => {
@@ -22,14 +23,20 @@ export function App() {
         const canteen = await res.json();
         setUser(canteen.users)
         setData(product.products);
+        setError(false)
       } catch (err) {
         console.error(err);
+        setError(true)
       }
     };
     GetProduct();
   }, []);
 
-  console.log(user)
+  if (error) {
+    return <h1>tolong sambungkan ke internet</h1>
+  } else if (data.length == 0) {
+    return <h1>SEDANG MEMUAT</h1>
+  }
 
   return (
     <LocationProvider>
