@@ -31,8 +31,8 @@ function Navbar({ onSearchFocus, setInput }) {
 
             {/* Menu Navigasi Kanan (Sembunyi di HP, muncul di Desktop) */}
             <div className="hidden sm:flex gap-6 text-xl items-center font-semibold">
-                <button className="flex gap-2 items-center hover:scale-105 transition-transform cursor-pointer">
-                    <FontAwesomeIcon icon={faShop} />
+                <button className="flex gap-2 items-center hover:scale-105 transition-transform cursor-pointer" onClick={() => location.href = "/kantin"}>
+                    <FontAwesomeIcon icon={faShop}/>
                     <span className="text-base">Kantin</span>
                 </button>
                 <button className="flex gap-2 items-center hover:scale-105 transition-transform cursor-pointer">
