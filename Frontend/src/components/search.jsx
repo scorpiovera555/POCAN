@@ -3,9 +3,9 @@ import BackButton from "./backButton.jsx";
 
 function Search({ back, input, items }) {
     const searchInput = input.toLowerCase();
-    const item = items || [];
+    const item = items || [""];
     const filteredItems = item.filter(data =>
-        String(data.title || "").toLowerCase().includes(searchInput)
+        data.title.toLowerCase().includes(searchInput)
     );
 
     return (

@@ -16,7 +16,9 @@ function BottomMenu() {
                 <FontAwesomeIcon icon={ (path == "/") ? faHouseSolid : faHouse } className={styleIcon}/>
                 <p className="text-sm">Beranda</p>
             </span>
-            <span className="flex flex-col items-center">
+            <span className="flex flex-col items-center" onCLick={() => {
+                location.href = "/kantin"
+            }}>
                 <FontAwesomeIcon icon={ (path.split('/')[1] == "kantin") ? faUserSolid : faUser } className={styleIcon} />
                 <p className="text-sm">Kantin</p>
             </span>
