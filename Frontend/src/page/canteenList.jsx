@@ -10,7 +10,7 @@ function CanteenList() {
     return (
         <div className="min-h-screen bg-bgcol px-4 pb-24 pt-6 sm:px-8 sm:pb-10 sm:pt-10">
             <div className="grid gap-4">
-                {data.map((user) => (
+                {data?.map((user) => (
                     <article key={user.id} className="flex min-w-0 items-center justify-between gap-3 rounded-2xl border border-primary/10 bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:gap-5 sm:p-5">
                             <div className="flex min-w-0 items-center">
                                 <ProfileLogo data={user} />

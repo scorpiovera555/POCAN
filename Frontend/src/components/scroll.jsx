@@ -36,7 +36,7 @@ function ScrollUser() {
         onMouseMove={handleMove}
         onMouseLeave={handleLeft}
         onMouseUp={handleLeft}>
-            {users.map((user) => {
+            {users?.map((user) => {
                 return <img key={user.id} src={user.image} alt="poto propile" className="w-18" onClick={() => {
                     location.href = `/kantin/${user.id}`
                 }}/>

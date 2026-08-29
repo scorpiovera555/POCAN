@@ -5,18 +5,32 @@ export function useFetch(url) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch(url).then(res => {
-            if (!res.ok) {
-                throw new Error('Could Not fetch this data for that response');
-            }
+        let isMounted = true;
 
-            return res.json();
-        })
-        .then(data => {
-            setData(data);
-            setError(null)
-        }).catch(err => setError(err));
-    }, [data]);
-    
-    return {data, error}
+        fetch(url)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error('Could Not fetch this data for that response');
+                }
+
+                return res.json();
+            })
+            .then((result) => {
+                if (isMounted) {
+                    setData(result);
+                    setError(null);
+                }
+            })
+            .catch((err) => {
+                if (isMounted) {
+                    setError(err);
+                }
+            });
+
+        return () => {
+            isMounted = false;
+        };
+    }, [url]);
+
+    return { data, error };
 }

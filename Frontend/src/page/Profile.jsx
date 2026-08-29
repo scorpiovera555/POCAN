@@ -9,7 +9,9 @@ function CanteenProfile() {
     const path = location.pathname.split("/");
     const item = useContext(ItemsContext);
     const data = useContext(UsersContext);
-    const userData = data.find(user => user.id == path[2]) || [];
+    const userId = Number(path[2]);
+    const userData = data?.find((user) => Number(user.id) === userId) || null;
+
     return(
         <>
         <header className="w-full bg-gray-400 py-2">
