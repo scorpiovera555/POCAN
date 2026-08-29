@@ -11,7 +11,7 @@ function Home() {
     console.log(isSearch);
     return (
         <>
-        <Navbar show={() => setIsSearch(true)}/>
+        <Navbar show={() => setIsSearch(!isSearch)} status={isSearch}/>
             <>
             <div className="mt-15 sm:mt-0 bg-bgcol">
                 <ScrollUser/>

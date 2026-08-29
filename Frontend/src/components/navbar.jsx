@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faReceipt, faShop } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faReceipt, faShop, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-function Navbar({ show }) {
+function Navbar({ show, status }) {
     return (
         <nav className="fixed sm:static top-0 left-0 z-50 w-full bg-primary py-3 px-4 sm:px-8 flex justify-between items-center text-white shadow-md">
             
@@ -15,7 +15,8 @@ function Navbar({ show }) {
             {/* Container Search (Otomatis menyesuaikan lebar layar) */}
             <div>
                 <button>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} onClick={show}/>
+                    {status ? <FontAwesomeIcon icon={faXmark} onClick={show}/> : <FontAwesomeIcon icon={faMagnifyingGlass} onClick={show}/>}
+                    
                 </button>
             </div>
 

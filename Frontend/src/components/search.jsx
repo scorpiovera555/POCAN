@@ -12,7 +12,6 @@ function Search({ back, items }) {
     return (
         <>
         <div className="absolute top-5 bg-white pt-16 flex flex-col pb-10 items-center w-full min-h-screen">
-            <BackButton back={back}/>
             <div>
                 <input type="text" name="search" id="search" placeholder="Cari di kantin..." value={input} onInput={(e) => {
                     setInput(e.target.value)
