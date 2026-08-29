@@ -47,7 +47,7 @@ export function App() {
           <UsersContext.Provider value={user}>
             <Router>
               <Route path="/" component={() => <Home/>} />
-              {(location.pathname.split("/kantin/")[1] < user.length && location.pathname.split("/kantin/")[1] > 0) && <Route path="/kantin/:id" component={() => <CanteenProfile/>} />}
+              {(location.pathname.split("/kantin/")[1] <= user.length && location.pathname.split("/kantin/")[1] > 0) && <Route path="/kantin/:id" component={() => <CanteenProfile/>} />}
               <Route path="/kantin" component={() => <CanteenList/>} />
               <Route default component={() => <Error/>} />
             </Router>
