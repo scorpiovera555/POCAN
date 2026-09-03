@@ -1,6 +1,10 @@
+import Display from "../components/Display.jsx";
+
 function Home() {
     return (
-        <h1>Hello From Home Page</h1>
+        <>
+        <Display />
+        </>
     )
 }
 
