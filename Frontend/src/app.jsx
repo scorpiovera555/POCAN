@@ -1,19 +1,39 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import { useState } from "react";
 
 function App() {
-  const [title, setTitle] = useState("Beranda")
+  const location = useLocation();
+  const [title, setTitle] = useState(() => {
+    const path = location.pathname
+    let result;
+    switch(path) {
+      case "/":
+        result = "Beranda";
+        break;
+      case "/cart":
+        result = "Daftar Belanja";
+        break;
+      case "/kantin":
+        result = "Daftar Kantin";
+        break;
+      case "/money":
+        result = "Uang Anda";
+        break;
+    }
+
+    return result;
+  })
 
   return (
-    <div className="bg-linear-to-b from-green-200 to-green-100 h-full">
+    <div className="bg-linear-to-b from-green-200 to-green-100 min-h-screen flex flex-col">
       <header className="py-4">
         <div className="fixed z-100 top-0 py-3 border-1 border-white/20 rounded-b-xl flex justify-center w-full bg-white/0 backdrop-blur-lg">
           <button className="bg-white p-1 w-10 h-10 text-xl font-bold absolute left-4 rounded-full">&#9776;</button>
           <h1 className="p-1 text-xl font-semibold font-['Segoe_UI', sans-serif]">{title}</h1>
         </div>
       </header>
-      <main className="mt-10">
+      <main className="mt-10 h-full">
         <Outlet />
       </main>
       <footer>

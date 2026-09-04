@@ -8,6 +8,8 @@ function Display() {
     const [user, setUser] = useState([]);
     const [food, setFood] = useState([]);
     const [filtered, setFiltered] = useState([]);
+    const [items, setItems] = useState(JSON.parse(localStorage.getItem("food")) || []);
+    
     useEffect(() => {
         fetch("https://dummyjson.com/users?limit=8").then(res => res.json())
         .then(data => setUser(data.users)).catch(err => console.error(err))
@@ -69,7 +71,7 @@ function Display() {
             </div>
             <div className="grid grid-cols-2 gap-3 mt-5 pb-25">
                 {filtered.map(item => {
-                    return <Card item={item}/>
+                    return <Card item={item} food={items} setFood={setItems}/>
                 })}
             </div>
         </div>

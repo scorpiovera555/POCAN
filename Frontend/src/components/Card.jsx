@@ -1,17 +1,45 @@
 import { Minus } from "lucide-react";
-import { useState } from "react"
+import { useEffect } from "react"
 
-function Card({ item }) {
-    const [amount, setAmount] = useState(0);
+function Card({ item, food, setFood }) {
+    const cartItem = food.find(data => data.name == item.name);
+    let amount = cartItem ? cartItem.amount : 0;
+
+    useEffect(() => {
+        localStorage.setItem("food", JSON.stringify(food))
+    }, [food])
     
     const addAmount = () => {
         if (amount + 1 > 5) return
-        setAmount(amount + 1)
+
+        const match = food.find(data => data.name == item.name);
+        console.log(match)
+        let updated;
+        if (match) {
+            updated = food.map(data => {
+                return data.name == item.name ? {...data, amount: data.amount + 1} : data
+            })
+            
+            setFood(updated)
+            return
+        }
+
+        const data = {
+            name: item.name,
+            price: item.prepTimeMinutes,
+            amount: amount + 1
+        }
+        setFood([...food, data])
     }
 
     const minusAmount = () => {
         if (amount - 1 < 0) return
-        setAmount(amount - 1)
+        const updated = food.map(data => {
+            return data.name == item.name ? {...data, amount: data.amount - 1} : data
+        })
+
+        const newData = updated.filter(data => data.amount != 0);
+        setFood(newData);
     }
 
     const buttonStyles = "w-5 h-5 rounded-full flex items-center justify-center text-lg"
